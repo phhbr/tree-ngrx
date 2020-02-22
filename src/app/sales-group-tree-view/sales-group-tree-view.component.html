@@ -1,0 +1,15 @@
+<h4>Sales Groups Tree</h4>
+<ng-container *ngIf="(nodes$ | async) as nodes">
+  <tree-root [nodes]="nodes">
+    <ng-template #treeNodeTemplate let-node let-index="index">
+      <span>{{ node.data.id + ': ' + node.data.name }}</span>
+      <em *ngIf="node.data.assignmentStatus.hasPriorityConflict" (click)="doStuff(node.data)"
+          class="fas fa-star-half-alt" style="color: orange"></em>
+      <em *ngIf="node.data.assignmentStatus.isPrioritySelected" (click)="doStuff(node.data)"
+          class="fas fa-star"></em>
+      <em *ngIf="!node.data.assignmentStatus.isPrioritySelected &&
+      !node.data.assignmentStatus.isPriorityConflict" (click)="doStuff(node.data)" class="far fa-star"></em>
+    </ng-template>
+  </tree-root>
+</ng-container>
+<p>sales-group-tree-view works!</p>

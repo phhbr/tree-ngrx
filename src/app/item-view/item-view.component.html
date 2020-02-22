@@ -1,0 +1,9 @@
+<h4>{{title}}</h4>
+<section style="height: 100px;overflow: auto">
+  <div *ngFor="let items of items$ | async">
+    {{items | json}}
+  </div>
+</section>
+<label>Count
+  <span>{{itemCount$ | async}}</span>
+</label>
